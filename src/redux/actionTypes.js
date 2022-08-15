@@ -1,11 +1,10 @@
 
-const actionTypes = () => ({
+const actionTypes = {
     CHANGE_CATEGORY: "CHANGE_CATEGORY", 
     CHANGE_DIFFICAULTY: "CHANGE_DIFFICAULTY", 
     CHANGE_TYPE: "CHANGE_TYPE", 
     CHANGE_AMOUNT: "CHANGE_AMOUNT", 
     CHANGE_SCORE: "CHANGE_SCORE" 
-
-})
+}
 
 export default actionTypes;

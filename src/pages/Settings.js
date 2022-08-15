@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import {useNavigate } from 'react-router-dom'
 import SelectField from '../components/SelectField';
+import Loading from '../components/Loading';
 import useAxios from '../hooks/useAxios'
 import { useDispatch } from 'react-redux/es/exports';
 import { Box } from '@mui/system';
-import {Button,CircularProgress, Typography} from '@mui/material';
+import {Button, Typography} from '@mui/material';
 import TextFiled from '../components/TextFiled';
 import {handleChangeDifficaulty, handleChangeType, handleChangeAmount, handleChangeCategory} from '../redux/actions'
 
@@ -17,11 +18,7 @@ const Settings = () => {
 
 // conditional loading for loading and when we get error
     if(loading){
-        return (
-            <Box mt={15}>
-                <CircularProgress />
-            </Box>
-        )
+        return <Loading />
     }
 
     if(error){
@@ -46,17 +43,9 @@ const Settings = () => {
     }
 
 // save seleceted items by user into state and dispatch reducer from redux
-    const handleChange = (type, value) => {
-        setInputValue(prev=> ({...prev, [type]: value}));
-        // const whichType ={
-        //     'Category': handleChangeCategory,
-        //     'Difficulty': handleChangeDifficaulty,
-        //     'Type': handleChangeType,
-        //     'Amount': handleChangeAmount
-        // }
-        // console.log(whichType[type])
-        // dispatch(whichType[type](value))
-        switch(type){
+    const handleChange = (label, value) => {
+        setInputValue(prev=> ({...prev, [label]: value}));
+        switch(label){
             case 'Category':
                 dispatch(handleChangeCategory(value));
                 break;
@@ -72,7 +61,6 @@ const Settings = () => {
             default: return;
         }
     }
-    console.log(inputValue)
 
 // hangle form request and send user with its choises to question page
     const handleSubmit = (e) => {

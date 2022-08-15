@@ -4,8 +4,8 @@ const INITIAL_STATE = {
     questionCategory: '', 
     questionDifficaulty: '',
     questionType: '',
-    amountOfQuestion: '',
-    score: 10
+    amountOfQuestion: 5,
+    score: 0
 }
 
 const reducer = (state= INITIAL_STATE, action) => {
